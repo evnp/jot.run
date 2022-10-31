@@ -1,0 +1,25 @@
+{
+  "name": "jot.run",
+  "version": "0.0.2",
+  "description": "A minimalist personal knowledge wrangler.",
+  "main": "jot.bash",
+  "files": [
+    "jot.bash"
+  ],
+  "bin": {
+    "jot": "jot.bash"
+  },
+  "scripts": {
+    "lint": "shellcheck jot.bash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evnp/jot.run.git"
+  },
+  "homepage": "https://jot.run",
+  "author": "Evan Purcer <evanpurcer@gmail.com> (http://evnp.ca)",
+  "license": "MIT",
+  "devDependencies": {
+    "shellcheck": "1.1.0"
+  }
+}

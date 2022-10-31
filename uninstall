@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function uninstall {
+  local jotfile
+  local jotdir
+  jotfile="$( which jot )"
+  if ! [[ "${jotfile}" == "/bin/jot" || "${jotfile}" == "/usr/bin/jot" ]]; then
+    jotdir="$( dirname "${jotfile}" )"
+    rm "${jotfile}"
+    echo "Removed file 'jot' from '${jotdir}'"
+    echo "Remember to remove any jot aliases from your shell rc files if you have them."
+    echo "Thanks for trying out Jot -- if you have any feedback it's always appreciated."
+    echo "Please open an issue with any topic at https://github.com/evnp/jot/issues"
+    exit 0
+  else
+    echo "No Jot installation detected. Are you sure Jot is installed?"
+    exit 1
+  fi
+}
+
+uninstall "$@"

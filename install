@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+function install {
+  local bin
+  if [[ -z "${1:-}" ]]; then
+    echo "No BIN directory provided."
+  elif ! [[ -d "${1:-}" ]]; then
+    echo "Invalid BIN directory provided (you provided \"${1:-}\", not a directory)."
+  else
+    bin="${1:-}"
+  fi
+  if [[ -z "${bin}" ]]; then
+    echo -n "Please provide as the only argument to this script the directory"
+    echo " on your \$PATH within which you'd like to install jot."
+    exit 1
+  fi
+
+  local jotcmd="j"
+  if [[ -n "${2:-}" ]]; then
+    jotcmd="${2:-}"
+  fi
+
+  # install Jot under provided command (default: 'j')
+  cp "$( dirname "${BASH_SOURCE[0]}" )/jot.bash" "${bin}/${jotcmd}"
+
+  local aliasfile
+  local aliasline
+  local firstalias=true
+  if [[ -f "${3:-}" ]]; then
+    aliasfile="${3:-}"
+    tail -n +3 < "$( dirname "${BASH_SOURCE[0]}" )/aliases.bash" | \
+    while IFS= read -r aliasline; do
+      if ! grep -q -x -F "${aliasline}" "${aliasfile}"; then
+        if [[ "${firstalias}" == true ]]; then
+          printf "\n# Jot Aliases (https://github.com/evnp/jot#aliases)\n" >> "${aliasfile}"
+          firstalias=false
+        fi
+        echo "${aliasline}" >> "${aliasfile}"
+      fi
+    done
+  fi
+
+  echo "Jot was successfully installed! Run '${jotcmd} -h' to get started."
+}
+
+install "$@"
