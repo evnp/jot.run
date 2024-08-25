@@ -1,0 +1,54 @@
+{
+  "name": "ToDo",
+  "short_name": "ToDo",
+  "description": "A local-first to-do app.",
+  "id": "/",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#1d232a",
+  "background_color": "#1d232a",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-narrow-light.png",
+      "sizes": "1080x2400",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile Screenshot (Light Theme)"
+    },
+    {
+      "src": "/screenshot-narrow-dark.png",
+      "sizes": "1080x2400",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Mobile Screenshot (Dark Theme)"
+    },
+    {
+      "src": "/screenshot-wide-light.png",
+      "sizes": "3360x2100",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop Screenshot (Light Theme)"
+    },
+    {
+      "src": "/screenshot-wide-dark.png",
+      "sizes": "3360x2100",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop Screenshot (Dark Theme)"
+    }
+ ]
+}
